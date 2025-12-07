@@ -400,7 +400,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 👨‍💻 Author
 
-**Naseer**
+**YEshwanth**
 
 - GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
 - Email: your.email@example.com
@@ -429,6 +429,7 @@ If you have any questions or need help, please:
 
 **⭐ Star this repository if you find it helpful!**
 
-Made with ❤️ by Naseer
+Made with ❤️ by YEshwanth
+
 
 </div>
