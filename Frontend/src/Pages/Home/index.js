@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     const getStudents = () => {
       axios
-        .get("https://sttiss-api.vercel.app/student/get")
+        .get(`${process.env.REACT_APP_API_URL}/student/get`)
         .then((res) => {
           setStudents(res.data);
         })
@@ -34,7 +34,7 @@ export default function Home() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://sttiss-api.vercel.app/student/delete/${id}`)
+          .delete(`${process.env.REACT_APP_API_URL}/student/delete/${id}`)
           .then((res) => {
             Swal.fire("Deleted!", res.data.status, "success");
             //update table after deleting
@@ -52,14 +52,14 @@ export default function Home() {
 
   return (
     <div className="text-center mb-4">
-      <h5 style={{ textAlign: "center", padding: "3rem" }}>Students Attendance Sekolah Tinggi Teknologi Informatika Sony Sugema</h5>
+      <h5 style={{ textAlign: "center", padding: "3rem" }}>Students Management System</h5>
       <Link to="/add-student">
         <div className="col-4">
           <button className="btn btn-primary" type="submit">
             Add Student
           </button>
         </div>
-      </Link > 
+      </Link>
       <div className="container">
         {students.length > 0 ? (
           <table className="table ">

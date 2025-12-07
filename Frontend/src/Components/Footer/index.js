@@ -1,17 +1,17 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <div>
-            <footer className="text-sm text-center">
-                <div className="d-flex flex-column flex-md-row justify-content-center">
-                    <p className="m-5">
-                        Copyright &copy; {new Date().getFullYear()}, STTISS. Designed & Developed by Gilbert Hutapea
-                    </p>
-                </div>
-            </footer>
-        </div>
-    );
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <p className="footer-text">
+          Copyright © {new Date().getFullYear()}, <strong>Student Management System</strong>.
+          All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

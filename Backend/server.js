@@ -22,32 +22,33 @@ const URL = process.env.MONGODB_URL;
 mongoose.connect(URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
-// .then(() => {
-//     console.log('Connected to database!');
-//     // Start listening for incoming requests
-//     app.listen(process.env.PORT, () => {
-//       console.log(`Server running on port ${process.env.PORT}`);
-//     });
-//   })
-//   .catch((err) => console.error(err));
+})
+  .then(() => {
+    console.log('Mongodb Connection Success!');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err.message);
+    process.exit(1);
+  });
 
-//once connected to the databse this will use to check it
+//once connected to the database this will use to check it
 const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log('Mongodb Connection Success!');
-});
 
-//create coonnection between front end and backend
+//create connection between front end and backend
 const studentRoute = require('./routes/students_route');
+const subjectRoute = require('./routes/subjects_route');
+const attendanceRoute = require('./routes/attendance_route');
+const markRoute = require('./routes/marks_route');
 
 /*By using app.use() method with the '/student' route as the first argument,
  you are telling Express to use this middleware for any route that starts with '/student'.
   This means that if a client makes a request to /student/create, /student/view, /student/update, or 
-  any other route that starts with '/student', the request will be passed on to the studetRoute middleware
+  any other route that starts with '/student', the request will be passed on to the studentRoute middleware
    to handle.*/
 app.use('/student', studentRoute);
+app.use('/subject', subjectRoute);
+app.use('/attendance', attendanceRoute);
+app.use('/marks', markRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port : ${PORT}`);

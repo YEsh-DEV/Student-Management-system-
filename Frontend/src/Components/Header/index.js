@@ -1,48 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../Assets/LogoSttiss.png";
+import "./Header.css";
 
 function Header() {
-  return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="nav-link" href="/">
-            <img
-              className="img-fluid"
-              src={logo}
-              alt="Logo STTISS"
-              style={{ width: "3rem" }}
-            />
-          </a>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="/add-student">
-                  Create Student
-                </a>
-              </li>
-            </ul>
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path ? 'active' : '';
+  };
+
+  // Check if we're on the landing page for floating header
+  const isLandingPage = location.pathname === '/';
+
+  return (
+    <header className={`header ${isLandingPage ? 'header-floating' : ''}`}>
+      <div className="header-container">
+        <Link to="/" className="header-logo" onClick={closeMenu}>
+          <img
+            className="header-logo-img"
+            src={logo}
+            alt="SRM Logo"
+          />
+          <div className="header-logo-text">
+            <h1 className="header-title">SRM</h1>
+            <span className="header-subtitle">Student Management</span>
           </div>
-        </div>
-      </nav>
-    </div>
+        </Link>
+
+        <button
+          className="header-menu-toggle"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger ${menuOpen ? 'open' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <nav className={`header-nav ${menuOpen ? 'open' : ''}`}>
+          <ul className="header-nav-list">
+            <li>
+              <Link
+                to="/"
+                className={`header-nav-link ${isActive('/')}`}
+                onClick={closeMenu}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/students"
+                className={`header-nav-link ${isActive('/students')}`}
+                onClick={closeMenu}
+              >
+                Students
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/add-student"
+                className={`header-nav-link btn-nav ${isActive('/add-student')}`}
+                onClick={closeMenu}
+              >
+                Add Student
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }
 

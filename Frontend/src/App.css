@@ -1,41 +1,55 @@
-.App {
-  text-align: center;
-}
+/* Import Design System */
+@import './theme.css';
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* App-specific styles */
+#root {
   min-height: 100vh;
   display: flex;
+}
+
+/* Main Content Area - No margin since sidebar is hidden by default */
+.app-container {
+  flex: 1;
+  margin-left: 0;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.App-link {
-  color: #61dafb;
-}
-.countClass {
-  color: green;
+.app-content {
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Mobile - No margin when sidebar is hidden */
+@media (max-width: 768px) {
+  .app-container {
+    margin-left: 0;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }

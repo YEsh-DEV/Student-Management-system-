@@ -1,19 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../Assets/LogoSttiss.png";
 import './NoStudent.css';
 
 const NoStudent = () => (
-    <div className="no-student p-3">
-        <h2>No Student Found</h2>
-        <p>
-            Add Student Attendance
-        </p>
+    <div className="no-student">
         <img
-            className="img-fluid bounce-animation "
+            className="no-student-logo"
             src={logo}
-            alt="Logo STTISS"
-            style={{ width: "15rem", padding: "2rem" }}
+            alt="No Students"
         />
+        <h2>No Students Found</h2>
+        <p>
+            Start by adding your first student to the system.
+        </p>
+        <Link to="/add-student" className="btn btn-primary btn-lg">
+            Add Student
+        </Link>
     </div>
 );
 

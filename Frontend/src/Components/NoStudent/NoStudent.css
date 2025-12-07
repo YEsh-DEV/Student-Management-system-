@@ -1,19 +1,72 @@
-.bounce-animation {
-    animation-name: bounce;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
+.no-student {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl);
+  text-align: center;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  margin: var(--spacing-xl) auto;
+  max-width: 600px;
+}
+
+.no-student h2 {
+  color: var(--primary-color);
+  font-size: var(--text-3xl);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-secondary);
+}
+
+.no-student p {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.no-student-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: var(--spacing-lg);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
   }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-30px);
-    }
-    60% {
-      transform: translateY(-15px);
-    }
+
+  40% {
+    transform: translateY(-20px);
   }
-  
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .no-student {
+    padding: var(--spacing-xl);
+  }
+
+  .no-student h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .no-student p {
+    font-size: var(--text-base);
+  }
+
+  .no-student-logo {
+    width: 120px;
+    height: 120px;
+  }
+}

@@ -1,0 +1,37 @@
+.footer {
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  text-align: center;
+}
+
+.footer-text {
+  font-size: var(--text-sm);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.footer-text strong {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .footer-container {
+    padding: 0 var(--spacing-md);
+  }
+
+  .footer-text {
+    font-size: var(--text-xs);
+  }
+}
